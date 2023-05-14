@@ -114,7 +114,7 @@ st.pyplot(fig)
 st.subheader("Estatísticas Descritivas dos Atributos Numéricos")
 st.write(data.describe())
 
-# Adicionando uma tabela para mostrar a média de idade dos estudantes por escola
+# 1. Qual é a média de idade dos alunos na escola GP?
 st.subheader("Média de Idade dos Estudantes por Escola")
 school_mean_age = data.groupby('school')['age'].mean()
 fig, ax = plt.subplots()
@@ -124,7 +124,7 @@ ax.set_ylabel('Media da idade dos Estudantes')
 st.pyplot(fig)
 
 
-# moda do endereço dos alunos na escola MS 
+# 2. Qual é a moda do endereço dos alunos na escola MS?
 st.subheader("Moda do endereço dos alunos na escola MS")
 school_moda_address = data[data.school == 'MS']['address'].mode()
 match school_moda_address.values[0]:
@@ -135,9 +135,7 @@ match school_moda_address.values[0]:
     case _:
         st.write("Não informado")
 
-
-
-# Adicionando uma tabela para mostrar a médiana do tempo de viagem dos alunos que estudam na escolaGP
+# 3. Qual é a mediana do tempo de viagem dos alunos que estudam na escola GP?
 st.subheader("Qual é a médiana do tempo de viagem dos alunos que estudam na escolaGP")
 school_median_traveltime = data[data.school == 'GP']['traveltime'].median()
 
@@ -156,12 +154,12 @@ match school_median_traveltime:
 
 
 
-# Qual é o desvio padrão da idade dos alunos que têm apoio educacional extra na escola MS
+# 4. Qual é o desvio padrão da idade dos alunos que têm apoio educacional extra na escola MS?
 st.subheader("Qual é o desvio padrão da idade dos alunos que têm apoio educacional extra na escola MS")
 school_std_age = data[(data.school == 'MS') & (data.schoolsup == 'yes')]['age'].std()
 st.write(school_std_age)
 
-# Qual é a média do tempo semanal de estudo dos alunos cujos pais estão separados na escola GP
+# 5. Qual é a média do tempo semanal de estudo dos alunos cujos pais estão separados na escola GP?
 st.subheader("Qual é a média do tempo semanal de estudo dos alunos cujos pais estão separados na escola GP")
 school_mean_studytime = data[(data.school == 'GP') & (data.Pstatus == 'A')]['studytime'].mean()
 match school_mean_studytime:
@@ -177,7 +175,7 @@ match school_mean_studytime:
         st.write("Não informado")
 
 
-#Qual é a moda do motivo pelo qual os alunos escolheram a escola MS?
+# 6. Qual é a moda do motivo pelo qual os alunos escolheram a escola MS?
 st.subheader("Qual é a moda do motivo pelo qual os alunos escolheram a escola MS?")
 school_moda_reason = data[data.school == 'MS']['reason'].mode()
 match school_moda_reason.values[0]:
@@ -192,12 +190,12 @@ match school_moda_reason.values[0]:
     case _:
         st.write("Não informado")
 
-#Qual é a mediana do número de faltas dos alunos que frequentam a escola GP?   
+# 7. Qual é a mediana do número de faltas dos alunos que frequentam a escola GP?  
 st.subheader("Qual é a mediana do número de faltas dos alunos que frequentam a escola GP?")
 school_median_absences = data[data.school == 'GP']['absences'].median()
 st.write(school_median_absences)
 
-#Qual é o desvio padrão do nível de saúde dos alunos que frequentam atividades extracurriculares na escola MS?
+# 8. Qual é o desvio padrão do nível de saúde dos alunos que frequentam atividades extracurriculares na escola MS?
 st.subheader("Qual é o desvio padrão do nível de saúde dos alunos que frequentam atividades extracurriculares na escola MS?")
 school_std_health = data[(data.school == 'MS') & (data.activities == 'yes')]['health'].std()
 match school_std_health:
@@ -214,12 +212,12 @@ match school_std_health:
     case _:
         st.write("Não informado")
 
-#Quantos alunos já cumpriram as horas extracurriculares?   
+# 9. Quantos alunos já cumpriram as horas extracurriculares?  
 st.subheader("Quantos alunos já cumpriram as horas extracurriculares?")
 school_count_activities = data[data.activities == 'yes']['activities'].count()
 st.write(school_count_activities)
 
-#Qual é a moda do consumo de álcool dos alunos da escola MS durante a semana de trabalho?  
+# 10. Qual é a moda do consumo de álcool dos alunos da escola MS durante a semana de trabalho?
 st.subheader("Qual é a moda do consumo de álcool dos alunos da escola MS durante a semana de trabalho?")
 school_moda_workday_alcohol = data[data.school == 'MS']['Dalc'].mode()
 match school_moda_workday_alcohol.values[0]:
